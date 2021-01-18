@@ -1,1 +1,54 @@
-<p>home works!</p>
+<div class="container-fluid">
+  <div class="row my-5">
+    <div class="col-10 offset-1 col-md-6 offset-md-3">
+      <div class="row">
+        <div class="col">
+          <h1>Parse Cloud Functions CRUD Demo</h1>
+        </div>
+      </div>
+      <ng-template [ngIf]="this.isLoading" [ngIfElse]="renderResults">
+        <div class="row m-5">
+          <div class="col text-center">
+            <div class="spinner-border"></div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #renderResults>
+        <div class="row my-5">
+          <div class="col-12 btns-container">
+            <button class="btn btn-success" (click)="this.createSong()">
+              Create
+            </button>
+            <button class="btn btn-danger" (click)="this.deleteSong()">
+              Delete
+            </button>
+          </div>
+        </div>
+        <div class="row my-5">
+          <ng-template
+            [ngIf]="this.resultSet && this.resultSet.length === 0"
+            [ngIfElse]="showRecordCards"
+          >
+            <div class="col text-center">
+              <p>There are no records found in the database</p>
+            </div>
+          </ng-template>
+          <ng-template #showRecordCards>
+            <div class="col-6" *ngFor="let song of this.resultSet">
+              <div class="card my-3">
+                <div class="card-body">
+                  <div class="card-title">
+                    {{ song.name }}
+                  </div>
+                  <div class="card-subtitle text-muted">
+                    {{ song.artist }}, {{ song.album }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
