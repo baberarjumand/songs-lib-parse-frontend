@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  parseAppId: 'APP_ID',
+  parseMasterKey: 'MASTER_KEY',
+  mongoDbUri: 'MONGODB_URI',
+  parseServerUrl: 'SERVER_URL',
 };
 
 /*
